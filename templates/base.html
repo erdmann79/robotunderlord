@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}robotunderlord{% endblock %}</title>
+<style>
+  :root {
+    --bg: #0b0e14; --fg: #c9d1d9; --accent: #58a6ff;
+    --dim: #6e7681; --card: #11161f; --border: #1f2733;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg); color: var(--fg);
+    font-family: 'SF Mono', 'Consolas', 'Monaco', monospace;
+    margin: 0; line-height: 1.6;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 2rem 1.5rem; }
+  h1 { font-size: 1.8rem; margin-bottom: 0.2rem; color: #fff; }
+  .tagline { color: var(--accent); margin-top: 0; }
+  nav { margin-bottom: 2rem; }
+  nav a { color: var(--accent); text-decoration: none; margin-right: 1.2rem; }
+  nav a:hover { text-decoration: underline; }
+  h2 {
+    font-size: 1.1rem; color: var(--dim); text-transform: uppercase;
+    letter-spacing: 0.08em; margin-top: 2.5rem;
+    border-bottom: 1px solid var(--border); padding-bottom: 0.5rem;
+  }
+  .project, .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 6px; padding: 1.2rem 1.4rem; margin-bottom: 1rem;
+  }
+  .project h3 { margin: 0 0 0.4rem 0; color: #fff; font-size: 1.05rem; }
+  .codename {
+    display: inline-block; font-size: 0.7rem; color: var(--accent);
+    border: 1px solid var(--border); border-radius: 4px;
+    padding: 0.1rem 0.4rem; margin-left: 0.5rem;
+  }
+  .status { display: inline-block; font-size: 0.75rem; color: var(--dim); margin-top: 0.6rem; }
+  input, button {
+    background: var(--card); color: var(--fg); border: 1px solid var(--border);
+    border-radius: 4px; padding: 0.5rem; font-family: inherit; margin-bottom: 0.6rem; width: 100%;
+  }
+  button { color: var(--accent); cursor: pointer; }
+  footer { margin-top: 3rem; color: var(--dim); font-size: 0.85rem; border-top: 1px solid var(--border); padding-top: 1.5rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a href="{% url 'home' %}">home</a>
+    {% if user.is_authenticated %}
+      <a href="{% url 'profile' %}">profile ({{ user.username }})</a>
+      <a href="{% url 'logout' %}">logout</a>
+    {% else %}
+      <a href="{% url 'login' %}">login</a>
+      <a href="{% url 'register' %}">register</a>
+    {% endif %}
+  </nav>
+  {% block content %}{% endblock %}
+  <footer>Pumpkin Chunkin catapult designer (AutoCAD). Senior Automation Architect at SAP.</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Eric Erdmann</h1>
+<p class="tagline">// robotunderlord</p>
+<p>Self-taught network/automation architect. Big nerd with lots of Raspberry Pis and Arduinos.<br>Xen nut. I build things myself instead of waiting for someone else to.</p>
+
+<h2>Currently building</h2>
+{% for project in projects %}
+<div class="project">
+  <h3>{{ project.title }}{% if project.codename %}<span class="codename">{{ project.codename }}</span>{% endif %}</h3>
+  <p>{{ project.description }}</p>
+  <span class="status">{{ project.status }}</span>
+</div>
+{% endfor %}
+{% endblock %}

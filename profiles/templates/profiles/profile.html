@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{ profile.user.username }}'s profile</h2>
+<div class="card">
+  <p>{{ profile.bio|default:'No bio yet.' }}</p>
+  <p class="status">Steam ID: {{ profile.steam_id|default:'not linked' }}</p>
+</div>
+{% endblock %}
