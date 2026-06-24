@@ -4,6 +4,12 @@
 <p class="tagline">// robotunderlord</p>
 <p>Self-taught network/automation architect. Big nerd with lots of Raspberry Pis and Arduinos.<br>Xen nut. I build things myself instead of waiting for someone else to.</p>
 
+<div class="links">
+{% for link in links %}
+  <a href="{{ link.url }}">{{ link.label }}</a>
+{% endfor %}
+</div>
+
 <h2>Currently building</h2>
 {% for project in projects %}
 <div class="project">

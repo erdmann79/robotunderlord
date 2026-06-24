@@ -13,3 +13,16 @@ class Project(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Link(models.Model):
+    label = models.CharField(max_length=100)
+    url = models.URLField()
+    public = models.BooleanField(default=True, help_text='Visible to anonymous visitors. If false, only shown to logged-in users.')
+    order = models.IntegerField(default=0)
+
+    class Meta:
+        ordering = ['order', 'label']
+
+    def __str__(self):
+        return self.label
